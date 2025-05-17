@@ -11,6 +11,10 @@ import { IonicModule } from '@ionic/angular';
 export class ButtonComponent  implements OnInit {
 
   @Input() text: string = 'Confirmar';
+  @Input() color: string = 'primary';
+  @Input() bgColor: string = 'primary';
+  @Input() size: string = 'default';
+  
   constructor() { }
 
   ngOnInit() {}
