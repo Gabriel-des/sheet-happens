@@ -14,7 +14,7 @@ export class LoginService {
   ) { }
 
   public login(email: string, password: string): Observable<boolean> {
-    const url = `${this.apiUrl}/register`;
+    const url = `${this.apiUrl}/login`;
     const body = {
       email,
       password

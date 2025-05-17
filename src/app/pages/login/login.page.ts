@@ -4,6 +4,8 @@ import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, 
 import { InputComponent } from 'src/app/components/input/input.component';
 import { ButtonComponent } from "../../components/button/button.component";
 import { LoginService } from 'src/app/services/login.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login',
@@ -14,7 +16,8 @@ import { LoginService } from 'src/app/services/login.service';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ButtonComponent
+    ButtonComponent,
+    HttpClientModule,
 ]
 })
 export class LoginPage implements OnInit {
