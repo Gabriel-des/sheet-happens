@@ -1,4 +1,6 @@
 <ion-button 
+  (click)="onClick()"
+  [disabled]="disabled"
   [color]="color" 
   class="bg-{{bgColor}}-500" 
   [size]="size">{{text}}</ion-button>
