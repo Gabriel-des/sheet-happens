@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { InputComponent } from 'src/app/components/input/input.component';
 import { ButtonComponent } from "../../components/button/button.component";
 import { LoginService } from 'src/app/services/login.service';
-import { HttpClientModule } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -16,15 +14,15 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    ButtonComponent,
-    HttpClientModule,
+    ButtonComponent
 ]
 })
 export class LoginPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) { }
 
   public loginForm: FormGroup;
@@ -42,20 +40,16 @@ export class LoginPage implements OnInit {
     });
   }
 
-  public login() {
+  public login(): void {
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe(
       (response) => {
-        if (response) {
-          console.log('Login successful');
-        } else {
-          console.log('Login failed');
-        }
+        localStorage.setItem('access_token', response.access_token);
+        this.router.navigate(['/home']);
+      },
+      (error) => {
+        alert('Error: ' + error.error.message);
       }
     );
-  }
-
-  private showLoginError() {
-    console.log('Login error');
   }
 
   public validIfFieldIsInvalidAndTouched(field: string): boolean | undefined {
