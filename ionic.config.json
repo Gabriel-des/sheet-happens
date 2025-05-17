@@ -1,0 +1,7 @@
+{
+  "name": "sheet-happens",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
